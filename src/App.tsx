@@ -15,12 +15,13 @@ const defaultState = {
   players: 0,
   points: 0,
   highestWins: true,
+  gameWon: false,
 };
 
 function App() {
   const [state, setState] = useState(defaultState);
   const handleNewGame = () => {
-    setState(Object.assign({}, state, { newGame: true }));
+    setState(Object.assign({}, defaultState, { newGame: true }));
   };
   const handleClose = () => {
     setState(Object.assign({}, state, { newGame: false }));
@@ -43,13 +44,13 @@ function App() {
         close={handleClose}
         createGame={handleOk}
       />
-      <ScoreBoard />
       <p>
         No. of Players : {state.players} <br></br>
         Points: {state.points}
         <br></br>
         Highest Wins: {state.highestWins ? "yes" : "no"}
       </p>
+      <ScoreBoard state={state} />
     </Container>
   );
 }
