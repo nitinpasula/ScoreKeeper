@@ -1,4 +1,4 @@
-export interface Player {
+export default interface Player {
   name: string;
   score: number;
   isWinner: boolean;

@@ -1,13 +1,12 @@
 import React from "react";
-import Player from "./Player";
+import PlayerComponent from "./PlayerComponent";
+import Player from "../model/Player";
 
 const ScoreBoard: React.FC<any> = (props: any) => {
-  const players = [];
-  for (let i = 0; i < props.state.players; i++) {
-    players.push(
-      <Player name={`player ${i}`} winningPoints={props.state.points} />
-    );
-  }
-  return <div>{players}</div>;
+  const displayPlayers = props.players.map((player: Player) => (
+    <PlayerComponent name={player.name} winningPoints={props.winningPoints} />
+  ));
+
+  return <div>{displayPlayers}</div>;
 };
 export default ScoreBoard;

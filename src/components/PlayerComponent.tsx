@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 
-const Player: React.FC<any> = (props: any) => {
+const PlayerComponent: React.FC<any> = (props: any) => {
   const [playerScore, setPlayerScore] = useState(0);
   const [winner, setWinner] = useState(false);
   const increase = () => {
@@ -38,4 +38,4 @@ const Player: React.FC<any> = (props: any) => {
     </div>
   );
 };
-export default Player;
+export default PlayerComponent;
