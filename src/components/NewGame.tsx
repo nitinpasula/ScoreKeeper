@@ -1,34 +1,48 @@
 import React from "react";
-import Card from "react-bootstrap/Card";
-import Nav from "react-bootstrap/Nav";
-import Button from "react-bootstrap/Button";
 
 const NewGame: React.FC = () => {
   return (
-    <Card>
-      <Card.Header>
-        <Nav variant="tabs" defaultActiveKey="#first">
-          <Nav.Item>
-            <Nav.Link href="#first">Active</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link href="#link">Link</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link href="#disabled" disabled>
-              Disabled
-            </Nav.Link>
-          </Nav.Item>
-        </Nav>
-      </Card.Header>
-      <Card.Body>
-        <Card.Title>Special title treatment</Card.Title>
-        <Card.Text>
-          With supporting text below as a natural lead-in to additional content.
-        </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
-      </Card.Body>
-    </Card>
+    <div className="newgame">
+      <h2> New Game </h2>
+      <form>
+        <label htmlFor="gamename">
+          Game Name:
+          <input
+            id="gamename"
+            type="text"
+            placeholder="Enter a name for game"
+          ></input>
+        </label>
+        <br></br>
+        <label htmlFor="points">
+          Points:
+          <input
+            id="points"
+            type="number"
+            placeholder="Enter game points"
+            required
+          ></input>
+        </label>
+        <br></br>
+        <label htmlFor="gamestrategy">
+          Game Strategy:
+          <select id="gamestrategy" required>
+            <option value="FTRW"> First To Reach Wins </option>
+            <option value="LTRW"> Last To Reach Wins </option>
+          </select>
+        </label>
+        <br></br>
+        <label htmlFor="player">
+          Player Name:
+          <input id="player" type="text" placeholder="Enter player name" />
+          <button id="addplayer" type="button">
+            Add Player
+          </button>
+        </label>
+        <br></br>
+        <button type="submit">Start Game</button>
+      </form>
+    </div>
   );
 };
 export default NewGame;
