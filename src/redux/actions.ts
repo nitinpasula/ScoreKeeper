@@ -5,6 +5,7 @@ import {
   SET_GAME_STRATEGY,
   SET_POINTS,
   RESET_GAME,
+  REMOVE_PLAYER,
 } from "./actionTypes";
 import Player from "../model/Player";
 import { GameStrategy } from "../model/GameStrategy";
@@ -39,6 +40,12 @@ export const addPlayer = (player: Player) => {
   return {
     type: ADD_PLAYER,
     player,
+  };
+};
+export const removePlayer = (playerName: string) => {
+  return {
+    type: REMOVE_PLAYER,
+    playerName,
   };
 };
 

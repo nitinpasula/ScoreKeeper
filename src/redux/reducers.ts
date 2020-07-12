@@ -5,6 +5,7 @@ import {
   SET_POINTS,
   SET_GAME_STRATEGY,
   RESET_GAME,
+  REMOVE_PLAYER,
 } from "./actionTypes";
 import IAppState from "./IAppState";
 import { GameStrategy } from "../model/GameStrategy";
@@ -36,6 +37,12 @@ export default function scoreKeeper(
     case ADD_PLAYER:
       return Object.assign({}, state, {
         players: [...state.players, action.player],
+      });
+    case REMOVE_PLAYER:
+      return Object.assign({}, state, {
+        players: state.players.filter(
+          (player) => player.name !== action.playerName
+        ),
       });
     default:
       return state;
