@@ -1,6 +1,9 @@
 import Player from "./Player";
+import { GameStrategy } from "./GameStrategy";
 
 export interface Game {
+  name: string;
   players: Player[];
-  pointsToWin: number;
+  points: number;
+  strategy: GameStrategy;
 }

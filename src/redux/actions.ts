@@ -1,14 +1,42 @@
-import { START_GAME, CREATE_GAME } from "./actionTypes";
-import { Game } from "../model/Game";
+import {
+  START_GAME,
+  ADD_PLAYER,
+  SET_GAME_NAME,
+  SET_GAME_STRATEGY,
+  SET_POINTS,
+} from "./actionTypes";
+import Player from "../model/Player";
+import { GameStrategy } from "../model/GameStrategy";
 export const startGame = () => {
   return {
     type: START_GAME,
   };
 };
 
-export const createGame = (game: Game) => {
+export const setGameName = (name: string) => {
   return {
-    type: CREATE_GAME,
-    game,
+    type: SET_GAME_NAME,
+    name,
+  };
+};
+
+export const setPoints = (points: number) => {
+  return {
+    type: SET_POINTS,
+    points,
+  };
+};
+
+export const setGameStrategy = (strategy: GameStrategy) => {
+  return {
+    type: SET_GAME_STRATEGY,
+    strategy,
+  };
+};
+
+export const addPlayer = (player: Player) => {
+  return {
+    type: ADD_PLAYER,
+    player,
   };
 };
