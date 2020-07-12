@@ -4,6 +4,7 @@ import {
   SET_GAME_NAME,
   SET_GAME_STRATEGY,
   SET_POINTS,
+  RESET_GAME,
 } from "./actionTypes";
 import Player from "../model/Player";
 import { GameStrategy } from "../model/GameStrategy";
@@ -38,5 +39,11 @@ export const addPlayer = (player: Player) => {
   return {
     type: ADD_PLAYER,
     player,
+  };
+};
+
+export const resetGame = () => {
+  return {
+    type: RESET_GAME,
   };
 };

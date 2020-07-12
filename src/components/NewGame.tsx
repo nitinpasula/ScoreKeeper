@@ -5,6 +5,7 @@ import {
   setPoints,
   setGameName,
   setGameStrategy,
+  resetGame,
 } from "../redux/actions";
 import { GameStrategy } from "../model/GameStrategy";
 import IAppState from "../redux/IAppState";
@@ -16,7 +17,7 @@ const NewGame: React.FC<any> = (props: any) => {
     props.doSetGameName(event.currentTarget.value);
   };
   const handlePointsChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
-    props.doSetPoints(event.currentTarget.value);
+    props.doSetPoints(parseInt(event.currentTarget.value));
   };
   const handleStartGame = () => {
     props.doStartGame();
@@ -25,6 +26,9 @@ const NewGame: React.FC<any> = (props: any) => {
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
     props.doSetGameStrategy(event.currentTarget.value);
+  };
+  const handleResetGame = () => {
+    props.doResetGame();
   };
   return (
     <div className="newgame">
@@ -61,8 +65,11 @@ const NewGame: React.FC<any> = (props: any) => {
       <AddPlayer />
       <br></br>
       <ListPlayers />
-      <button type="submit" onClick={handleStartGame}>
+      <button type="button" onClick={handleStartGame}>
         Start Game
+      </button>
+      <button type="button" onClick={handleResetGame}>
+        Reset
       </button>
     </div>
   );
@@ -79,6 +86,9 @@ const mapDispatchToProps = (dispatch: any) => {
   return {
     doStartGame: () => {
       dispatch(startGame());
+    },
+    doResetGame: () => {
+      dispatch(resetGame());
     },
     doSetPoints: (points: number) => {
       dispatch(setPoints(points));

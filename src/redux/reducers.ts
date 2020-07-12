@@ -4,6 +4,7 @@ import {
   SET_GAME_NAME,
   SET_POINTS,
   SET_GAME_STRATEGY,
+  RESET_GAME,
 } from "./actionTypes";
 import IAppState from "./IAppState";
 import { GameStrategy } from "../model/GameStrategy";
@@ -14,6 +15,7 @@ const initialState: IAppState = {
   strategy: GameStrategy.FTRW,
   gameStarted: false,
   winner: undefined,
+  rounds: undefined,
 };
 
 export default function scoreKeeper(
@@ -23,6 +25,8 @@ export default function scoreKeeper(
   switch (action.type) {
     case START_GAME:
       return Object.assign({}, state, { gameStarted: true });
+    case RESET_GAME:
+      return Object.assign({}, initialState);
     case SET_GAME_NAME:
       return Object.assign({}, state, { gameName: action.name });
     case SET_POINTS:
