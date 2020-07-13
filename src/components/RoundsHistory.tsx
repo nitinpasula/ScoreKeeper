@@ -4,39 +4,30 @@ import { connect } from "react-redux";
 import Player from "../model/Player";
 
 const RoundsHistory: React.FC<any> = (props: any) => {
-  const displayHistory = props.players.map((player: Player) => {
-    return (
+  const displayHistory: any = [];
+  for (let i = props.rounds; i > 0; i--) {
+    const playerScores = props.players.map((player: Player) => {
+      return (
+        <tr>
+          <td>
+            <strong>{player.name}</strong>
+          </td>
+          <td>{player.scores[i - 1]}</td>
+        </tr>
+      );
+    });
+
+    const roundDetails = (
       <div className="round">
-        <h4> Round </h4>
+        <h4> Round {i}</h4>
         <table>
-          <tbody>
-            <tr>
-              <td>
-                {" "}
-                <strong>Nitin Pasula</strong>
-              </td>
-              <td>75</td>
-            </tr>
-            <tr>
-              <td>
-                {" "}
-                <strong>Akhila Eppa</strong>
-              </td>
-              <td>50</td>
-            </tr>
-            <tr>
-              <td>
-                {" "}
-                <strong>Nikhil Pasula</strong>
-              </td>
-              <td>45</td>
-            </tr>
-          </tbody>
+          <tbody>{playerScores}</tbody>
         </table>
       </div>
     );
-  });
-  return displayHistory;
+    displayHistory.push(roundDetails);
+  }
+  return <div className="history">{displayHistory}</div>;
 };
 const mapStateToProps = (state: IAppState) => {
   return {
