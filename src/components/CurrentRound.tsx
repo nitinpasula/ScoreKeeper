@@ -2,13 +2,18 @@ import React from "react";
 import IAppState from "../redux/IAppState";
 import Player from "../model/Player";
 import { connect } from "react-redux";
-import { nextRound } from "../redux/actions";
+import { nextRound, toggleShowHistory } from "../redux/actions";
 
 const CurrentRound: React.FC<any> = (props: any) => {
+  const historyButton = props.showHistory ? "Hide History" : "Show History";
   const goToNextRound = () => {
     props.players.forEach((player: Player) => {
       if (player.scores.length !== props.roundNumber) {
-        player.scores.push(0);
+        if (player.scores[player.scores.length - 1]) {
+          player.scores.push(player.scores[player.scores.length - 1]);
+        } else {
+          player.scores.push(0);
+        }
       }
     });
     props.doNextRound(props.players);
@@ -16,7 +21,7 @@ const CurrentRound: React.FC<any> = (props: any) => {
   const displayPlayerScore = props.players.map((player: Player) => {
     const name = player.name;
     const currentScore =
-      props.roundNumber === 1 ? 0 : player.scores[props.roundNumber - 1];
+      props.roundNumber === 1 ? 0 : player.scores[props.roundNumber - 2];
     const handlePointsUpdate = (event: React.ChangeEvent<HTMLInputElement>) => {
       console.log(event.currentTarget.value);
       player.scores[props.roundNumber - 1] = parseInt(
@@ -55,7 +60,10 @@ const CurrentRound: React.FC<any> = (props: any) => {
       </button>
       <button type="button">Reset</button>
       <button type="button">Save</button>
-      <button type="button">Show History</button>
+
+      <button type="button" onClick={() => props.doToggleShowHistory()}>
+        {historyButton}
+      </button>
     </div>
   );
 };
@@ -63,6 +71,8 @@ const mapStateToProps = (state: IAppState) => {
   return {
     players: state.players,
     roundNumber: state.gameRound,
+    pointsToWin: state.points,
+    showHistory: state.showHistory,
   };
 };
 
@@ -70,6 +80,9 @@ const mapDispatchToProps = (dispatch: any) => {
   return {
     doNextRound: (players: Player[]) => {
       dispatch(nextRound(players));
+    },
+    doToggleShowHistory: () => {
+      dispatch(toggleShowHistory());
     },
   };
 };

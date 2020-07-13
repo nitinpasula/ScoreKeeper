@@ -7,6 +7,7 @@ import {
   RESET_GAME,
   REMOVE_PLAYER,
   NEXT_ROUND,
+  TOGGLE_SHOW_HISTORY,
 } from "./actionTypes";
 import IAppState from "./IAppState";
 import { GameStrategy } from "../model/GameStrategy";
@@ -51,6 +52,8 @@ export default function scoreKeeper(
         gameRound: state.gameRound + 1,
         players: action.players,
       });
+    case TOGGLE_SHOW_HISTORY:
+      return Object.assign({}, state, { showHistory: !state.showHistory });
     default:
       return state;
   }

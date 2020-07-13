@@ -8,3 +8,4 @@ export const RESTART_GAME = "RESTART_GAME";
 export const NEW_GAME = "NEW_GAME";
 export const REMOVE_PLAYER = "REMOVE_PLAYER";
 export const NEXT_ROUND = "NEXT_ROUND";
+export const TOGGLE_SHOW_HISTORY = "TOGGLE_SHOW_HISTORY";

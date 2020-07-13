@@ -7,6 +7,7 @@ import {
   RESET_GAME,
   REMOVE_PLAYER,
   NEXT_ROUND,
+  TOGGLE_SHOW_HISTORY,
 } from "./actionTypes";
 import Player from "../model/Player";
 import { GameStrategy } from "../model/GameStrategy";
@@ -60,5 +61,11 @@ export const nextRound = (players: Player[]) => {
   return {
     type: NEXT_ROUND,
     players,
+  };
+};
+
+export const toggleShowHistory = () => {
+  return {
+    type: TOGGLE_SHOW_HISTORY,
   };
 };
