@@ -8,7 +8,8 @@ interface IAppState {
   players: Player[];
   strategy: GameStrategy;
   gameStarted: boolean;
-  winner: undefined | Player;
+  gameOver: boolean;
+  winner: undefined | Player[];
   gameRound: number;
   showHistory: boolean;
 }

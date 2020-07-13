@@ -2,11 +2,17 @@ import React from "react";
 import IAppState from "../redux/IAppState";
 import Player from "../model/Player";
 import { connect } from "react-redux";
-import { nextRound, toggleShowHistory } from "../redux/actions";
+import {
+  nextRound,
+  toggleShowHistory,
+  setGameWinner,
+  setGameOver,
+} from "../redux/actions";
 
 const CurrentRound: React.FC<any> = (props: any) => {
   const historyButton = props.showHistory ? "Hide History" : "Show History";
   const goToNextRound = () => {
+    let winnerFound = false;
     props.players.forEach((player: Player) => {
       if (player.scores.length !== props.roundNumber) {
         if (player.scores[player.scores.length - 1]) {
@@ -15,8 +21,14 @@ const CurrentRound: React.FC<any> = (props: any) => {
           player.scores.push(0);
         }
       }
+      if (player.isWinner) {
+        winnerFound = true;
+      }
     });
     props.doNextRound(props.players);
+    if (winnerFound) {
+      props.doSetGameOver();
+    }
   };
   const displayPlayerScore = props.players.map((player: Player) => {
     const name = player.name;
@@ -24,9 +36,14 @@ const CurrentRound: React.FC<any> = (props: any) => {
       props.roundNumber === 1 ? 0 : player.scores[props.roundNumber - 2];
     const handlePointsUpdate = (event: React.ChangeEvent<HTMLInputElement>) => {
       console.log(event.currentTarget.value);
-      player.scores[props.roundNumber - 1] = parseInt(
-        event.currentTarget.value
-      );
+      const score = parseInt(event.currentTarget.value);
+      player.scores[props.roundNumber - 1] = score;
+      if (score >= props.pointsToWin) {
+        player.isWinner = true;
+        props.doSetGameWinner(player);
+      } else {
+        player.isWinner = false;
+      }
     };
     return (
       <tr key={name}>
@@ -83,6 +100,12 @@ const mapDispatchToProps = (dispatch: any) => {
     },
     doToggleShowHistory: () => {
       dispatch(toggleShowHistory());
+    },
+    doSetGameWinner: (player: Player) => {
+      dispatch(setGameWinner(player));
+    },
+    doSetGameOver: () => {
+      dispatch(setGameOver());
     },
   };
 };

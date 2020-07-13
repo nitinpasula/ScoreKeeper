@@ -8,6 +8,8 @@ import {
   REMOVE_PLAYER,
   NEXT_ROUND,
   TOGGLE_SHOW_HISTORY,
+  SET_GAME_WINNER,
+  SET_GAME_OVER,
 } from "./actionTypes";
 import IAppState from "./IAppState";
 import { GameStrategy } from "../model/GameStrategy";
@@ -20,6 +22,7 @@ const initialState: IAppState = {
   winner: undefined,
   gameRound: 1,
   showHistory: false,
+  gameOver: false,
 };
 
 export default function scoreKeeper(
@@ -54,6 +57,14 @@ export default function scoreKeeper(
       });
     case TOGGLE_SHOW_HISTORY:
       return Object.assign({}, state, { showHistory: !state.showHistory });
+    case SET_GAME_WINNER:
+      return Object.assign({}, state, {
+        winner: state.winner
+          ? [...state.winner, action.player]
+          : [action.player],
+      });
+    case SET_GAME_OVER:
+      return Object.assign({}, state, { gameOver: true });
     default:
       return state;
   }

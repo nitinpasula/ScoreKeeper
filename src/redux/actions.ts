@@ -8,6 +8,8 @@ import {
   REMOVE_PLAYER,
   NEXT_ROUND,
   TOGGLE_SHOW_HISTORY,
+  SET_GAME_WINNER,
+  SET_GAME_OVER,
 } from "./actionTypes";
 import Player from "../model/Player";
 import { GameStrategy } from "../model/GameStrategy";
@@ -67,5 +69,18 @@ export const nextRound = (players: Player[]) => {
 export const toggleShowHistory = () => {
   return {
     type: TOGGLE_SHOW_HISTORY,
+  };
+};
+
+export const setGameWinner = (player: Player) => {
+  return {
+    type: SET_GAME_WINNER,
+    player,
+  };
+};
+
+export const setGameOver = () => {
+  return {
+    type: SET_GAME_OVER,
   };
 };
