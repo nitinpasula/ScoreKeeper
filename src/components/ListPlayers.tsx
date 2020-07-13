@@ -2,7 +2,6 @@ import React from "react";
 import IAppState from "../redux/IAppState";
 import { connect } from "react-redux";
 import { removePlayer } from "../redux/actions";
-import Player from "../model/Player";
 
 const ListPlayers: React.FC<any> = (props: any) => {
   const handleRemovePlayer = (playerName: string) => {

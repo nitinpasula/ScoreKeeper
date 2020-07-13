@@ -1,5 +1,5 @@
 export default interface Player {
   name: string;
-  score: number;
+  scores: number[];
   isWinner: boolean;
 }

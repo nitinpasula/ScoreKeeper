@@ -6,6 +6,7 @@ import {
   SET_POINTS,
   RESET_GAME,
   REMOVE_PLAYER,
+  NEXT_ROUND,
 } from "./actionTypes";
 import Player from "../model/Player";
 import { GameStrategy } from "../model/GameStrategy";
@@ -52,5 +53,12 @@ export const removePlayer = (playerName: string) => {
 export const resetGame = () => {
   return {
     type: RESET_GAME,
+  };
+};
+
+export const nextRound = (players: Player[]) => {
+  return {
+    type: NEXT_ROUND,
+    players,
   };
 };

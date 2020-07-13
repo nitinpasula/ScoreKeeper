@@ -11,7 +11,7 @@ const AddPlayer: React.FC<any> = (props) => {
       const playerName = event.currentTarget.value;
       const newPlayer: Player = {
         name: playerName,
-        score: 0,
+        scores: [],
         isWinner: false,
       };
       props.doAddPlayer(newPlayer);
@@ -25,7 +25,7 @@ const AddPlayer: React.FC<any> = (props) => {
     const playerName = inputElement.value;
     const newPlayer: Player = {
       name: playerName,
-      score: 0,
+      scores: [],
       isWinner: false,
     };
     props.doAddPlayer(newPlayer);

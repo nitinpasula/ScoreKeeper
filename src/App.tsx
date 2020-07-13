@@ -9,6 +9,7 @@ const App: React.FC<any> = (props) => {
   return (
     <div className="scorekeepr">
       <h1> Score-Keeper</h1>
+      <hr></hr>
       {props.gameStarted ? <ScoreBoard /> : <NewGame />}
     </div>
   );

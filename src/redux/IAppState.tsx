@@ -9,6 +9,7 @@ interface IAppState {
   strategy: GameStrategy;
   gameStarted: boolean;
   winner: undefined | Player;
-  rounds: undefined | GameRound[];
+  gameRound: number;
+  showHistory: boolean;
 }
 export default IAppState;

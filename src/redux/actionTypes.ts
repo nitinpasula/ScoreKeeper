@@ -7,3 +7,4 @@ export const RESET_GAME = "RESET_GAME";
 export const RESTART_GAME = "RESTART_GAME";
 export const NEW_GAME = "NEW_GAME";
 export const REMOVE_PLAYER = "REMOVE_PLAYER";
+export const NEXT_ROUND = "NEXT_ROUND";

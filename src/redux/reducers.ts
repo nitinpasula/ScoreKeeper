@@ -6,6 +6,7 @@ import {
   SET_GAME_STRATEGY,
   RESET_GAME,
   REMOVE_PLAYER,
+  NEXT_ROUND,
 } from "./actionTypes";
 import IAppState from "./IAppState";
 import { GameStrategy } from "../model/GameStrategy";
@@ -16,7 +17,8 @@ const initialState: IAppState = {
   strategy: GameStrategy.FTRW,
   gameStarted: false,
   winner: undefined,
-  rounds: undefined,
+  gameRound: 1,
+  showHistory: false,
 };
 
 export default function scoreKeeper(
@@ -43,6 +45,11 @@ export default function scoreKeeper(
         players: state.players.filter(
           (player) => player.name !== action.playerName
         ),
+      });
+    case NEXT_ROUND:
+      return Object.assign({}, state, {
+        gameRound: state.gameRound + 1,
+        players: action.players,
       });
     default:
       return state;
