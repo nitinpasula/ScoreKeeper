@@ -1,8 +1,9 @@
 import React from "react";
+import "./Footer.css";
 const Footer: React.FC = () => {
   return (
     <div className="sk-footer">
-      <h4> fun score keeper</h4>
+      <h4>Fun Score Keeper App @ N3N</h4>
     </div>
   );
 };
