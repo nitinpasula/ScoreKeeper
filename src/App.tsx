@@ -4,13 +4,15 @@ import NewGame from "./components/NewGame";
 import ScoreBoard from "./components/ScoreBoard";
 import IAppState from "./redux/IAppState";
 import { connect } from "react-redux";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 
 const App: React.FC<any> = (props) => {
   return (
-    <div className="scorekeepr">
-      <h1> Score-Keeper</h1>
-      <hr></hr>
+    <div className="scorekeeper">
+      <Header />
       {props.gameStarted ? <ScoreBoard /> : <NewGame />}
+      <Footer />
     </div>
   );
 };

@@ -11,6 +11,7 @@ import { GameStrategy } from "../model/GameStrategy";
 import IAppState from "../redux/IAppState";
 import AddPlayer from "./AddPlayer";
 import ListPlayers from "./ListPlayers";
+import "./NewGame.css";
 
 const NewGame: React.FC<any> = (props: any) => {
   const handleGameNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
