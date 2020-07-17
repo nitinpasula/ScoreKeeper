@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import NewGame from "./components/NewGame";
+import NewGame from "./components/NewGame/NewGame";
 import ScoreBoard from "./components/ScoreBoard";
 import IAppState from "./redux/IAppState";
 import { connect } from "react-redux";
@@ -11,7 +11,9 @@ const App: React.FC<any> = (props) => {
   return (
     <div className="scorekeeper">
       <Header />
-      {props.gameStarted ? <ScoreBoard /> : <NewGame />}
+      <div className="content">
+        {props.gameStarted ? <ScoreBoard /> : <NewGame />}
+      </div>
       <Footer />
     </div>
   );
