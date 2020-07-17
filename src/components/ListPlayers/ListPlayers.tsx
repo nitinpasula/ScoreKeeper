@@ -11,21 +11,20 @@ const ListPlayers: React.FC<any> = (props: any) => {
 
   const players = props.players.map((player: any) => (
     <li key={player.name}>
-      {player.name}{" "}
-      <button
-        onClick={() => {
-          handleRemovePlayer(player.name);
-        }}
-      >
-        x
-      </button>
+      <div className="player">
+        <div className="playerName"> {player.name}</div>
+        <button
+          id="addPlayerButton"
+          onClick={() => {
+            handleRemovePlayer(player.name);
+          }}
+        >
+          x
+        </button>
+      </div>
     </li>
   ));
-  return (
-    <div className="players-list">
-      <ul>{players}</ul>
-    </div>
-  );
+  return <ul className="players-list">{players}</ul>;
 };
 
 const mapStateToProps = (state: IAppState) => {

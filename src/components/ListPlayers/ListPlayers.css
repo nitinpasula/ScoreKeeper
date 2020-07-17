@@ -1,3 +1,21 @@
-li {
-  /* background-color: black; */
+.player {
+  margin-bottom: 2px;
+  width: 200px;
+  background-color: rgba(3, 3, 3, 0.75);
+  border-radius: 5px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.playerName {
+  padding: 10px;
+}
+
+#addPlayerButton {
+  color: red;
+  border: 0;
+  font-size: large;
+  border-radius: 5px;
+  width: 25px;
 }
