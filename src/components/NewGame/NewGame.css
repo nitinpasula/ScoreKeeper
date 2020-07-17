@@ -8,3 +8,40 @@
   margin: 15px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
+.newgame-title {
+  background-color: rgba(3, 3, 3, 0.75);
+  color: white;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+}
+.newgame-details {
+  padding: 5px;
+}
+.newgame-addplayers {
+  padding: 5px;
+}
+.newgame-actions {
+  padding: 5px;
+}
+label {
+  padding: 5px;
+}
+
+button {
+  padding: 5px;
+  margin: 5px;
+  color: white;
+  background-color: rgba(3, 3, 3, 0.75);
+  border-radius: 5px;
+  font-weight: normal;
+}
+
+input {
+  padding: 5px;
+  margin: 5px;
+}
+select {
+  padding: 5px;
+  margin: 5px;
+}

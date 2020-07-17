@@ -4,6 +4,7 @@
   color: #fff;
   display: flex;
   justify-content: space-between;
+  border-radius: 5px;
 }
 .scorekeeper-title {
 }

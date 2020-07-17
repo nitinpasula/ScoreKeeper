@@ -1,12 +1,14 @@
 import React from "react";
-import IAppState from "../redux/IAppState";
+import IAppState from "../../redux/IAppState";
 import { connect } from "react-redux";
-import { removePlayer } from "../redux/actions";
+import { removePlayer } from "../../redux/actions";
+import "./ListPlayers.css";
 
 const ListPlayers: React.FC<any> = (props: any) => {
   const handleRemovePlayer = (playerName: string) => {
     props.doRemovePlayer(playerName);
   };
+
   const players = props.players.map((player: any) => (
     <li key={player.name}>
       {player.name}{" "}
@@ -19,7 +21,11 @@ const ListPlayers: React.FC<any> = (props: any) => {
       </button>
     </li>
   ));
-  return <ul>{players}</ul>;
+  return (
+    <div className="players-list">
+      <ul>{players}</ul>
+    </div>
+  );
 };
 
 const mapStateToProps = (state: IAppState) => {

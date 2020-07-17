@@ -1,14 +1,21 @@
 import React from "react";
-import Player from "../model/Player";
+import Player from "../../model/Player";
 import { connect } from "react-redux";
-import { addPlayer } from "../redux/actions";
+import { addPlayer } from "../../redux/actions";
 
 const AddPlayer: React.FC<any> = (props) => {
+  const capitalizeName = (name: string): string => {
+    return name
+      .split(" ")
+      .map((w) => w[0].toUpperCase() + w.slice(1))
+      .join(" ");
+  };
+
   const handlePlayerNameChange = (
     event: React.KeyboardEvent<HTMLInputElement>
   ) => {
     if (event.keyCode === 13) {
-      const playerName = event.currentTarget.value;
+      const playerName = capitalizeName(event.currentTarget.value);
       const newPlayer: Player = {
         name: playerName,
         scores: [],
@@ -22,7 +29,7 @@ const AddPlayer: React.FC<any> = (props) => {
     const inputElement = document.getElementById(
       "addplayer"
     ) as HTMLInputElement;
-    const playerName = inputElement.value;
+    const playerName = capitalizeName(inputElement.value);
     const newPlayer: Player = {
       name: playerName,
       scores: [],
