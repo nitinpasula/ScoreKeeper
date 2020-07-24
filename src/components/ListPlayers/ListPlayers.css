@@ -10,6 +10,7 @@
 
 .playerName {
   padding: 10px;
+  text-transform: capitalize;
 }
 
 #addPlayerButton {
